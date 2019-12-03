@@ -1,5 +1,5 @@
 [package]
-name = "Callpass-Rust"
+name = "callpass-rust"
 version = "0.1.0"
 authors = ["Hideki Saito <hidekis@gmail.com>"]
 edition = "2018"
