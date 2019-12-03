@@ -1,4 +1,15 @@
-mod callpass {
+/// The callpass module
+pub mod callpass {
+    ///
+    /// Generate callpass from the callsign.
+    ///
+    ///  # Example
+    ///
+    /// ```
+    /// use callpass_rust::callpass;
+    /// let result = callpass::get_callpass("TESTING".to_string());
+    /// # assert_eq!(result, 31421);
+    /// ```
     #[allow(dead_code)]
     pub fn get_callpass(call: String) -> i16 {
         let call = call.to_uppercase();
@@ -13,29 +24,23 @@ mod callpass {
             }
             i += 2;
         }
+
         hash & 0x7fff
     }
 
+    ///
+    /// Verify callpass against the callsign
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// use callpass_rust::callpass;
+    /// let result = callpass::check_callpass("TESTING".to_string(), 31421);
+    /// # assert_eq!(result, true);
+    /// ```
     #[allow(dead_code)]
     pub fn check_callpass(call: String, pass: i16) -> bool {
         let code = get_callpass(call);
         code == pass
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_callpass() {
-        let code = callpass::get_callpass(String::from("TESTING"));
-        assert_eq!(code, 31421);
-    }
-
-    #[test]
-    fn test_check_callpass() {
-        let result = callpass::check_callpass(String::from("TESTING"), 31421);
-        assert_eq!(result, true);
     }
 }
