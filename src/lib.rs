@@ -1,7 +1,7 @@
 mod callpass {
     #[allow(dead_code)]
-    pub fn get_callpass(mut call: String) -> i16 {
-        call = call.to_uppercase();
+    pub fn get_callpass(call: String) -> i16 {
+        let call = call.to_uppercase();
 
         let mut i = 0;
         let mut hash: i16 = 0x73e2;
